@@ -28,9 +28,9 @@
 		</nav-->
 		<div class="container">
     		<div class="blurb">
-        		<h1>This is Home</h1>
-				<p>This is an implementation of the cross-domain platform. I want to generate the same Client ID in two different domain with help of Google Analytics and Google Tag Manager</p>
-				<p>Just click this link to go to <a href="https://alfisyahri313.gitlab.io">About page</a></p?
+        		<h1 id="title">This is Home</h1>
+				<p id="content">This is an implementation of Single Page Application and tracking using GTM</p>
+				<p>Just click this link to go to <a id="about">About page</a></p?
     		</div><!-- /.blurb -->
 		</div><!-- /.container -->
 		<footer>
@@ -39,5 +39,14 @@
         		<li><a href="https://github.com/alfisyahri313" target="_blank">github.com/alfisyahri313</a></li>
 			</ul>
 		</footer>
+			
+		<script>
+			document.getElementById("about").addEventListener("click",about);
+			
+			function about(){
+				document.getElementById("title").innerText = "This is about Page";
+				window.history.pushState('page2', 'Title', '/about');
+			}
+		</script>
 	</body>
 </html>
