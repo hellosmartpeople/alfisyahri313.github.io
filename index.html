@@ -12,6 +12,22 @@
 				<!-- link to main stylesheet -->
 		<link rel="stylesheet" type="text/css" href="/css/main.css">
 	</head>
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyB4UUAd1uk6qZvYNlTagh9NnXPKhPraF3M",
+			authDomain: "fir-github-project.firebaseapp.com",
+			databaseURL: "https://fir-github-project.firebaseio.com",
+			projectId: "fir-github-project",
+			storageBucket: "fir-github-project.appspot.com",
+			messagingSenderId: "550147339562",
+			appId: "1:550147339562:web:b91237f3b8167876815a53",
+			measurementId: "G-GT70ZZW323"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		firebase.analytics();
+		</script>
 	<body>
 		<!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M98HBGB"
@@ -36,9 +52,11 @@
 				<p>Just click this link to go to <a id="back">Back one page</a></p>
 			</div><!-- /.blurb -->
 
+			<template is="dom-bind" id=app>
+				<button on-click="signInWithGoogle"></button>
+			</template>
 
 			
-
 		</div><!-- /.container -->
 
 		<footer>
@@ -80,39 +98,26 @@
 			https://firebase.google.com/docs/web/setup#available-libraries -->
 		<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-analytics.js"></script>
 
-		<script>
-		// Your web app's Firebase configuration
-		var firebaseConfig = {
-			apiKey: "AIzaSyB4UUAd1uk6qZvYNlTagh9NnXPKhPraF3M",
-			authDomain: "fir-github-project.firebaseapp.com",
-			databaseURL: "https://fir-github-project.firebaseio.com",
-			projectId: "fir-github-project",
-			storageBucket: "fir-github-project.appspot.com",
-			messagingSenderId: "550147339562",
-			appId: "1:550147339562:web:b91237f3b8167876815a53",
-			measurementId: "G-GT70ZZW323"
-		};
-		// Initialize Firebase
-		firebase.initializeApp(firebaseConfig);
-		firebase.analytics();
-		</script>
+		
 
 		<script>
-			function signInWithGoogle(){
-				// Using a popup.
-				var provider = new firebase.auth.GoogleAuthProvider();
-				provider.addScope('profile');
-				provider.addScope('email');
-				firebase.auth().signInWithPopup(provider).then(function(result) {
-				// This gives you a Google Access Token.
-				var token = result.credential.accessToken;
-				// The signed-in user info.
-				var user = result.user;
-				});
-			};
+			(function(){
+				var app = document.querySelector('#app');
 
-			signInWithGoogle();
+				app.signInWithGoogle = function() {
+					//SIgn in With Google
 
+					var provider = new firebase.auth.GoogleAuthProvider();
+
+					provider.addScope('profile');
+					provider.addScope('email');
+
+					return firebase.auth().signInWithGoogle(provider)
+						.catch(function(error){
+							console.log('Google sign in error', error)
+						});
+				};
+			})
 		</script>
 		
 		<script>
