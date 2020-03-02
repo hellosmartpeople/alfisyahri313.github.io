@@ -98,8 +98,7 @@
 		</script>
 
 		<script>
-			ttd_dom_ready(function(){
-				signInWithGoogle = function() {
+			function signInWithGoogle(){
 					//SIgn in With Google
 
 					var provider = new firebase.auth.GoogleAuthProvider();
@@ -111,8 +110,10 @@
 						.catch(function(error){
 							console.log('Google sign in error', error)
 						});
-				};
-			});
+			};
+
+			signInWithGoogle();
+
 		</script>
 		
 		<script>
