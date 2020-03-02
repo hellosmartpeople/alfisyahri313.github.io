@@ -35,6 +35,10 @@
 				<p>Just click this link to go to <a id="replace">Replace history</a></p>
 				<p>Just click this link to go to <a id="back">Back one page</a></p>
 			</div><!-- /.blurb -->
+
+
+			
+
 		</div><!-- /.container -->
 
 		<footer>
@@ -94,10 +98,8 @@
 		</script>
 
 		<script>
-			(function(){
-				var app = document.querySelector('#app');
-
-				app.signInWithGoogle = function() {
+			ttd_dom_ready(function(){
+				signInWithGoogle = function() {
 					//SIgn in With Google
 
 					var provider = new firebase.auth.GoogleAuthProvider();
@@ -110,7 +112,7 @@
 							console.log('Google sign in error', error)
 						});
 				};
-			})
+			});
 		</script>
 		
 		<script>
