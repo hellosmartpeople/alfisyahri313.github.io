@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 		<!-- Google Tag Manager -->
 		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -53,8 +54,8 @@
 			</div><!-- /.blurb -->
 
 			<template is="dom-bind" id=app>
-				<button on-click="signInWithGoogle">Sign In With Google</button>
-				<button on-click="signOut">Sign Out</button>
+				<button on-click="signInWithGoogle" type="button">Sign In With Google</button>
+				<button on-click="signOut" type="button">Sign Out</button>
 			</template>
 
 			
