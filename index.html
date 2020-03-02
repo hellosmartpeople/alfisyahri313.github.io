@@ -60,8 +60,8 @@
 				<p>Just click this link to go to <a id="replace">Replace history</a></p>
 				<p>Just click this link to go to <a id="back">Back one page</a></p>
 
-				<button on-click="signInWithGoogle()" type="button">Sign In With Google</button>
-				<button on-click="signOut()" type="button">Sign Out</button>
+				<button on-click="signInWithGoogle()">Sign In With Google</button>
+				<button on-click="signOut()">Sign Out</button>
 			</div><!-- /.blurb -->
 
 			
@@ -99,16 +99,7 @@
 				window.history.go(-1);
 			}
 			
-		</script>
-
-		<!-- The core Firebase JS SDK is always required and must be listed first -->
-		<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
-
-		<!-- TODO: Add SDKs for Firebase products that you want to use
-			https://firebase.google.com/docs/web/setup#available-libraries -->
-		<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-analytics.js"></script>
-
-		
+		</script>		
 
 		<script>
 			function signInWithGoogle(){
@@ -133,7 +124,6 @@
 
 			function authstate(){
 				firebase.auth().onAuthStateChanged(function (user) {
-					app.user = user;
 					if (user) {
 						console.log('user', user);
 					} else {
