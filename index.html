@@ -51,12 +51,12 @@
 				<p>Just click this link to go to <a id="home">Home page</a></p>
 				<p>Just click this link to go to <a id="replace">Replace history</a></p>
 				<p>Just click this link to go to <a id="back">Back one page</a></p>
+
+				<button on-click="signInWithGoogle()" type="button">Sign In With Google</button>
+				<button on-click="signOut()" type="button">Sign Out</button>
 			</div><!-- /.blurb -->
 
-			<template is="dom-bind" id=app>
-				<button on-click="signInWithGoogle" type="button">Sign In With Google</button>
-				<button on-click="signOut" type="button">Sign Out</button>
-			</template>
+			
 
 			
 		</div><!-- /.container -->
@@ -103,27 +103,27 @@
 		
 
 		<script>
-			(function(){
-				var app = document.querySelector('#app');
+			function signInWithGoogle(){
+				var provider = new firebase.auth.GoogleAuthProvider();
 
-				app.signInWithGoogle = function() {
-					//SIgn in With Google
+				provider.addScope('profile');
+				provider.addScope('email');
 
-					var provider = new firebase.auth.GoogleAuthProvider();
+				return firebase.auth().signInWithGoogle(provider)
+					.catch(function(error){
+						console.log('Google sign in error', error)
+					});
 
-					provider.addScope('profile');
-					provider.addScope('email');
+				authstate();
+			}
 
-					return firebase.auth().signInWithGoogle(provider)
-						.catch(function(error){
-							console.log('Google sign in error', error)
-						});
-				};
+			function signOut(){
+				firebase.auth().signOut();
 
-				app.signOut = function(){
-					firebase.auth().signOut();
-				}
+				authstate();
+			}
 
+			function authstate(){
 				firebase.auth().onAuthStateChanged(function (user) {
 					app.user = user;
 					if (user) {
@@ -132,7 +132,8 @@
 						console.log('signout');
 					}
 				});
-			})
+			}
+
 		</script>
 		
 		<script>
