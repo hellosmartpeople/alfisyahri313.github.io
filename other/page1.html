@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
+
+		<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+		<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-analytics.js"></script>
+	  
+		<!-- Add Firebase products that you want to use -->
+		<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+	  
+
+		<title>Alfi Syahri page 1</title>
+				<!-- link to main stylesheet -->
+		<link rel="stylesheet" type="text/css" href="/css/main.css">
+		
+		<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TD263X2');</script>
+<!-- End Google Tag Manager -->
+	</head>
+	<script>
+		// Your web app's Firebase configuration
+		/*var firebaseConfig = {
+			apiKey: "AIzaSyB4UUAd1uk6qZvYNlTagh9NnXPKhPraF3M",
+			authDomain: "fir-github-project.firebaseapp.com",
+			databaseURL: "https://fir-github-project.firebaseio.com",
+			projectId: "fir-github-project",
+			storageBucket: "fir-github-project.appspot.com",
+			messagingSenderId: "550147339562",
+			appId: "1:550147339562:web:b91237f3b8167876815a53",
+			measurementId: "G-GT70ZZW323"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		firebase.analytics();*/
+		</script>
+	<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TD263X2"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+		
+		<!--nav>
+    		<ul>
+        		<li><a href="/">Home</a></li>
+	        	<li><a href="/about">About</a></li>
+        		<li><a href="/cv">CV</a></li>
+        		<li><a href="/blog">Blog</a></li>
+    		</ul>
+		</nav-->
+		<div class="container">
+    		<div class="blurb">
+        		<h1 id="title">This is Page 1 in Other</h1>
+				<p id="content">This is an implementation of Single Page Application and tracking using GTM</p>
+				<p>Just click this link to go to <a id="about">About page</a></p>
+				<p>Just click this link to go to <a id="home">Home page</a></p>
+				<p>Just click this link to go to <a id="replace">Replace history</a></p>
+				<p>Just click this link to go to <a id="back">Back one page</a></p>
+				<p>Link to go to gitlab domain<a href="https://alfisyahri313.gitlab.io/">Here</a></p>
+				<p>Link to go to Other Page in this domain<a href="https://alfisyahri313.github.io/other/page1">Here</a></p>
+
+				<!-- <button on-click="signInWithGoogle()">Sign In With Google</button>
+				<button on-click="signOut()">Sign Out</button> -->
+			</div><!-- /.blurb -->
+
+			
+		
+		<div class="blurb"><div>	
+		<!-- <iframe src="https://alfisyahri313.gitlab.io" id="decorateMe"height="200" width="300" title="Gitlab Iframe"></iframe> -->
+			
+		</div></div>
+			
+		</div><!-- /.container -->
+
+		<footer>
+    		<ul>
+        		<li><a href="mailto:alfisyahri313@gmail.com">email</a></li>
+        		<li><a href="https://github.com/alfisyahri313" target="_blank">github.com/alfisyahri313</a></li>
+			</ul>
+		</footer>
+			
+		<script>
+			document.getElementById("about").addEventListener("click",about);
+			document.getElementById("home").addEventListener("click",home);
+			document.getElementById("replace").addEventListener("click",replace);
+			document.getElementById("back").addEventListener("click",back);
+
+			function about(){
+				document.getElementById("title").innerText = "This is About Page";
+				window.history.pushState('page2', 'Title', '/about');
+			}
+			function home(){
+				document.getElementById("title").innerText = "This is Home Page";
+				window.history.pushState('page2', 'Title', '/home');
+			}
+			function replace(){
+				document.getElementById("title").innerText = "This is Replace Page";
+				window.history.replaceState('page2', 'Title', '/replace');
+			}
+			function back(){
+				document.getElementById("title").innerText = "This is Back Page";
+				window.history.go(-1);
+			}
+			
+		</script>		
+
+		<script>
+			function signInWithGoogle(){
+				var provider = new firebase.auth.GoogleAuthProvider();
+				provider.addScope('profile');
+				provider.addScope('email');
+				firebase.auth().signInWithPopup(provider).then(function(result) {
+				// This gives you a Google Access Token.
+				var token = result.credential.accessToken;
+				// The signed-in user info.
+				var user = result.user;
+				});
+			}
+
+			function signOut(){
+				firebase.auth().signOut();
+
+				authstate();
+			}
+
+			function authstate(){
+				firebase.auth().onAuthStateChanged(function (user) {
+					if (user) {
+						console.log('user', user);
+					} else {
+						console.log('signout');
+					}
+				});
+			}
+
+		</script>
+		
+		<script>
+// 			window.fbAsyncInit = function() {
+// 			FB.init({
+// 				appId      : '2494008540837301',
+// 				cookie     : true,
+// 				xfbml      : true,
+// 				version    : 'v6.0'
+// 			});
+				
+// 			FB.AppEvents.logPageView();   
+				
+// 			};
+		
+// 			(function(d, s, id){
+// 			var js, fjs = d.getElementsByTagName(s)[0];
+// 			if (d.getElementById(id)) {return;}
+// 			js = d.createElement(s); js.id = id;
+// 			js.src = "https://connect.facebook.net/en_US/sdk.js";
+// 			fjs.parentNode.insertBefore(js, fjs);
+// 			}(document, 'script', 'facebook-jssdk'));
+		</script>
+	</body>
+</html>
