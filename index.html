@@ -85,7 +85,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         		<li><a href="https://github.com/alfisyahri313" target="_blank">github.com/alfisyahri313</a></li>
 			</ul>
 		</footer>
-			
+		<script>
+			const data = {}
+			document.addEventListener("DOMContentLoaded", function(event) { 
+			  const cid = ga.getAll()[0].get('clientId');
+			  data['cid'] = cid;
+			});
+		</script>
 		<script>
 			document.getElementById("about").addEventListener("click",about);
 			document.getElementById("home").addEventListener("click",home);
