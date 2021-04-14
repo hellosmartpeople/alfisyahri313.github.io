@@ -86,12 +86,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</ul>
 		</footer>
 		<script>
-			const data = {}
-			document.addEventListener("DOMContentLoaded", function(event) { 
-			  const cid = ga.getAll()[0].get('clientId');
-			  data['cid'] = cid;
-			  console.log(data);
-			});
+			var transaction_detail = {};
+
+			(async() => {
+				console.log("waiting for variable");
+				while(!window.hasOwnProperty("ga"))// define the condition as you like
+					await new Promise(resolve => setTimeout(resolve, 1000));
+				let cid = ga.getAll()[0].get('clientId');
+				transaction_detail['cid'] = cid;
+				console.log(transaction_detail);
+			})();
 		</script>
 		<script>
 			document.getElementById("about").addEventListener("click",about);
